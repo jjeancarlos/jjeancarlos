@@ -20,34 +20,24 @@ jobs:
         with:
           ref: main
           
-      - name: Generate contribution graph
-        uses: ashutosh00710/github-readme-activity-graph@v4
-        with:
-          username: jjeancarlos
-          bg_color: 0D1117
-          color: 00FF00
-          line: 00FF00
-          point: 00FF00
-          hide_title: true
-          hide_border: true
-          output: output/pacman-contribution-graph.svg
+      - name: Generate contribution SVG
+        run: |
+          # Cria a pasta output se não existir
+          mkdir -p output
           
-      - name: Generate dark version
-        uses: ashutosh00710/github-readme-activity-graph@v4
-        with:
-          username: jjeancarlos
-          bg_color: 000000
-          color: 00FF00
-          line: 00FF00
-          point: 00FF00
-          hide_title: true
-          hide_border: true
-          output: output/pacman-contribution-graph-dark.svg
+          # Baixa o gráfico de contribuições via API
+          # Formato Pacman style
+          curl -o output/pacman-contribution-graph.svg \
+          "https://ghchart.rshah.org/00FF00/jjeancarlos"
+          
+          # Versão dark
+          curl -o output/pacman-contribution-graph-dark.svg \
+          "https://ghchart.rshah.org/008000/jjeancarlos"
           
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add output/
-          git commit -m "📈 Update contribution graphs" || exit 0
+          git commit -m "📈 Update Pacman contribution graph" || exit 0
           git push
