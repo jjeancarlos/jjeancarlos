@@ -6,7 +6,7 @@ on:
     - cron: "0 0 * * *" 
   # Permite execução manual
   workflow_dispatch:
-  # Roda a cada push na main (opcional, mas bom para testes)
+  # Roda a cada push na main (opcional)
   push:
     branches:
       - main
@@ -21,23 +21,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # É crucial que você esteja no branch onde o README está.
           ref: main 
           
       - name: Generate Pacman graphs 🎨
-        # Ação que gera o gráfico do Pacman
-        uses: L-P/pacman-contrib@master 
+        # AÇÃO CORRIGIDA: Nova ação de geração do Pacman
+        uses: BexTuyet/pacman-graph-generator@v1
         with:
-          # O nome de usuário deve ser passado para que a ação saiba qual gráfico usar.
-          # Substitua 'jjeancarlos' pelo seu nome de usuário se o seu README não estiver neste repositório.
-          GITHUB_USERNAME: jjeancarlos 
-          # Definindo os caminhos de saída, como você usa no seu README.
-          OUTPUT_PATH: output/pacman-contribution-graph.svg
-          DARK_OUTPUT_PATH: output/pacman-contribution-graph-dark.svg
+          # O nome de usuário para o gráfico
+          github_user: jjeancarlos
+          # Caminho onde os SVGs serão salvos, como você usa no README
+          output_dir: output
           
       - name: Commit and push changes
+        # Usando uma ação para simplificar o commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          # Garante que apenas os arquivos gerados no diretório 'output' sejam commitados.
           file_pattern: output/*.svg 
           commit_message: "🎮 Update Pacman contribution graphs"
