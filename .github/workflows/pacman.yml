@@ -20,25 +20,34 @@ jobs:
         with:
           ref: main
           
-      - name: Generate GitHub contribution graph
-        uses: DemuraAIdev/github-contribution-snake-animation@v0.0.4
+      - name: Generate contribution graph
+        uses: ashutosh00710/github-readme-activity-graph@v4
         with:
-          # Suas configurações
-          github_user_name: jjeancarlos
-          # Arquivos de saída - vamos usar o mesmo formato do Pacman
-          svg_out_path: output/pacman-contribution-graph.svg
-          dark_svg_out_path: output/pacman-contribution-graph-dark.svg
-          # Estilo do gráfico (pode ajustar)
-          graph_type: classic
-          # Cores (opcional)
-          color_snake: "#00FF00"
-          color_dots: "#008000"
-          color_dots_min: "#004d00"
+          username: jjeancarlos
+          bg_color: 0D1117
+          color: 00FF00
+          line: 00FF00
+          point: 00FF00
+          hide_title: true
+          hide_border: true
+          output: output/pacman-contribution-graph.svg
+          
+      - name: Generate dark version
+        uses: ashutosh00710/github-readme-activity-graph@v4
+        with:
+          username: jjeancarlos
+          bg_color: 000000
+          color: 00FF00
+          line: 00FF00
+          point: 00FF00
+          hide_title: true
+          hide_border: true
+          output: output/pacman-contribution-graph-dark.svg
           
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add output/
-          git commit -m "📈 Update Pacman contribution graph" || exit 0
+          git commit -m "📈 Update contribution graphs" || exit 0
           git push
