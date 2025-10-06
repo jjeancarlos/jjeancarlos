@@ -2,8 +2,11 @@ name: Generate Pacman Contribution Graph
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    # Roda a cada 24 horas (meia-noite UTC)
+    - cron: "0 0 * * *" 
+  # Permite execução manual
   workflow_dispatch:
+  # Roda a cada push na main (opcional, mas bom para testes)
   push:
     branches:
       - main
@@ -12,31 +15,29 @@ jobs:
   generate-pacman:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # Necessário para commitar o SVG
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: main
+          # É crucial que você esteja no branch onde o README está.
+          ref: main 
           
-      - name: Generate vibrant Pacman graphs
-        run: |
-          mkdir -p output
-          
-          # Cores vibrantes estilo Pacman
-          # Versão LIGHT: Fundo branco, verde Pacman
-          curl -s "https://ghchart.rshah.org/FFD700/jjeancarlos" > output/pacman-contribution-graph.svg
-          
-          # Versão DARK: Fundo escuro, amarelo Pacman  
-          curl -s "https://ghchart.rshah.org/FFFF00/jjeancarlos" > output/pacman-contribution-graph-dark.svg
-          
-          echo "Pacman graphs generated successfully!"
+      - name: Generate Pacman graphs 🎨
+        # Ação que gera o gráfico do Pacman
+        uses: L-P/pacman-contrib@master 
+        with:
+          # O nome de usuário deve ser passado para que a ação saiba qual gráfico usar.
+          # Substitua 'jjeancarlos' pelo seu nome de usuário se o seu README não estiver neste repositório.
+          GITHUB_USERNAME: jjeancarlos 
+          # Definindo os caminhos de saída, como você usa no seu README.
+          OUTPUT_PATH: output/pacman-contribution-graph.svg
+          DARK_OUTPUT_PATH: output/pacman-contribution-graph-dark.svg
           
       - name: Commit and push changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add output/
-          git commit -m "🎮 Update vibrant Pacman graphs" || exit 0
-          git push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          # Garante que apenas os arquivos gerados no diretório 'output' sejam commitados.
+          file_pattern: output/*.svg 
+          commit_message: "🎮 Update Pacman contribution graphs"
