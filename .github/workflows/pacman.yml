@@ -20,15 +20,20 @@ jobs:
         with:
           ref: main
           
-      - name: Generate Pacman contribution graph
-        uses: jstrieb/github-stats@main
+      - name: Generate GitHub contribution graph
+        uses: DemuraAIdev/github-contribution-snake-animation@v0.0.4
         with:
-          include_private_contributions: false
-          screenshots_enabled: false
-          svg_enabled: true
-          svg_path: output/pacman-contribution-graph.svg
-          svg_dark_path: output/pacman-contribution-graph-dark.svg
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Suas configurações
+          github_user_name: jjeancarlos
+          # Arquivos de saída - vamos usar o mesmo formato do Pacman
+          svg_out_path: output/pacman-contribution-graph.svg
+          dark_svg_out_path: output/pacman-contribution-graph-dark.svg
+          # Estilo do gráfico (pode ajustar)
+          graph_type: classic
+          # Cores (opcional)
+          color_snake: "#00FF00"
+          color_dots: "#008000"
+          color_dots_min: "#004d00"
           
       - name: Commit and push changes
         run: |
