@@ -4,9 +4,7 @@ on:
   schedule:
     # Roda a cada 24 horas (meia-noite UTC)
     - cron: "0 0 * * *" 
-  # Permite execução manual
   workflow_dispatch:
-  # Roda a cada push na main (opcional)
   push:
     branches:
       - main
@@ -15,7 +13,7 @@ jobs:
   generate-pacman:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Necessário para commitar o SVG
+      contents: write # Crucial para o commit
     
     steps:
       - name: Checkout repository
@@ -24,16 +22,15 @@ jobs:
           ref: main 
           
       - name: Generate Pacman graphs 🎨
-        # AÇÃO CORRIGIDA: Nova ação de geração do Pacman
-        uses: BexTuyet/pacman-graph-generator@v1
+        # AÇÃO CORRIGIDA E MAIS ESTÁVEL:
+        uses: pacman-graph/pacman-graph-action@v1 
         with:
           # O nome de usuário para o gráfico
           github_user: jjeancarlos
-          # Caminho onde os SVGs serão salvos, como você usa no README
+          # O caminho de saída para os arquivos SVG
           output_dir: output
           
       - name: Commit and push changes
-        # Usando uma ação para simplificar o commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           file_pattern: output/*.svg 
