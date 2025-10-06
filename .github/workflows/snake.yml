@@ -1,14 +1,9 @@
 name: Generate Snake Animation
 
 on:
-  # Executa diariamente
   schedule:
     - cron: "0 0 * * *"
-  
-  # Execução manual
   workflow_dispatch:
-  
-  # Executa em pushes
   push:
     branches:
       - main
@@ -16,24 +11,21 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
+      
     steps:
-      # 1. Checkout do código
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      # 2. Gerar animação Snake
       - name: Generate snake animation
         uses: Platane/snk@v3
         with:
-          # Seu username do GitHub
           github_user_name: jjeancarlos
-          # Arquivos de saída
           outputs: |
             output/github-snake.svg
             output/github-snake-dark.svg?palette=github-dark
           
-      # 3. Commit e push das animações
       - name: Commit and push snake animation
         run: |
           git config --local user.email "action@github.com"
