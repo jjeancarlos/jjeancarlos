@@ -1,0 +1,52 @@
+name: Generate Pacman Contribution Graph
+
+on:
+  # Executa diariamente à meia-noite UTC
+  schedule:
+    - cron: "0 0 * * *"
+  
+  # Permite executar manualmente
+  workflow_dispatch:
+  
+  # Executa quando houver push na main
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    # Permissões necessárias para escrever no repositório
+    permissions:
+      contents: write
+    
+    steps:
+      # 1. Fazer checkout do código
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          
+      # 2. Gerar gráfico Pacman
+      - name: Generate Pacman contribution graph
+        uses: jstrieb/github-stats@v2
+        with:
+          # Incluir contribuições privadas (opcional)
+          include_private_contributions: true
+          # Gerar arquivos SVG
+          svg_enabled: true
+          # Caminho dos arquivos
+          svg_path: output/pacman-contribution-graph.svg
+          svg_dark_path: output/pacman-contribution-graph-dark.svg
+          # Token de autenticação
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+      # 3. Fazer commit das mudanças
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add output/
+          git commit -m "📈 Update Pacman contribution graph" || exit 0
+          git push
