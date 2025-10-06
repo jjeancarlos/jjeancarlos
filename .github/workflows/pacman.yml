@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build:
+  generate-pacman:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -20,24 +20,23 @@ jobs:
         with:
           ref: main
           
-      - name: Generate contribution SVG
+      - name: Generate vibrant Pacman graphs
         run: |
-          # Cria a pasta output se não existir
           mkdir -p output
           
-          # Baixa o gráfico de contribuições via API
-          # Formato Pacman style
-          curl -o output/pacman-contribution-graph.svg \
-          "https://ghchart.rshah.org/00FF00/jjeancarlos"
+          # Cores vibrantes estilo Pacman
+          # Versão LIGHT: Fundo branco, verde Pacman
+          curl -s "https://ghchart.rshah.org/FFD700/jjeancarlos" > output/pacman-contribution-graph.svg
           
-          # Versão dark
-          curl -o output/pacman-contribution-graph-dark.svg \
-          "https://ghchart.rshah.org/008000/jjeancarlos"
+          # Versão DARK: Fundo escuro, amarelo Pacman  
+          curl -s "https://ghchart.rshah.org/FFFF00/jjeancarlos" > output/pacman-contribution-graph-dark.svg
+          
+          echo "Pacman graphs generated successfully!"
           
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add output/
-          git commit -m "📈 Update Pacman contribution graph" || exit 0
+          git commit -m "🎮 Update vibrant Pacman graphs" || exit 0
           git push
