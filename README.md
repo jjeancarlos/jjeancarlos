@@ -1,4 +1,6 @@
-<img src="" width="300" alt="Solar System">
+<div align=center>
+  <img src="https://github.com/user-attachments/assets/fdd5d97f-6927-4862-a55f-1872a9dd58bd"  width="700" alt="Wake up, Neo...">
+</div>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jjeancarlos/jjeancarlos/output/pacman-contribution-graph-dark.svg">
