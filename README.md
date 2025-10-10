@@ -64,10 +64,10 @@ You 👇
 
 🖧 Estrutura de Redes de Computadores
 
-## ⚡ Tecnologias & Ferramentas
+## ⚡ Stack de interesse e aprendizado
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nodejs,python,java,git,github,mysql,postgres,docker,aws,linux,vscode,bash,php,c,cs,cpp,arduino,firebase,gcp,androidstudio,apple,atom,autocad,azure,bootstrap,blender,bun,cloudflare,cmake,dart,discord,django,dotnet,fastapi,figma,flutter,githubactions,gitlab,godot,graphql,idea,instagram,jquery,kali,kotlin,laravel,lua,md,maven,mongodb,nextjs,nginx,obsidian,go,neovim,mint,notion,postman,rails,raspberrypi,regex,ruby,rust,spring,sqlite,stackoverflow,sublime,svg,swift,tailwind,vercel,vim,visualstudio,vite,vue,wordpress,yarn" width="100%">
+  <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nodejs,python,java,git,github,mysql,postgres,docker,aws,linux,vscode,bash,php,c,cs,cpp,arduino,firebase,gcp,androidstudio,apple,atom,autocad,azure,bootstrap,blender,bun,cloudflare,cmake,dart,discord,django,dotnet,fastapi,figma,flutter,githubactions,gitlab,godot,graphql,idea,instagram,jquery,kali,kotlin,laravel,lua,md,maven,mongodb,nextjs,nginx,obsidian,go,neovim,mint,notion,postman,rails,raspberrypi,regex,ruby,rust,spring,sqlite,stackoverflow,sublime,svg,swift,tailwind,vercel,vim,visualstudio,vite,vue,wordpress,yarn,wireshark,nmap,burpsuite,metasploit,tor" width="100%">
 </p>
 
 ## 📊 Estatísticas do GitHub
