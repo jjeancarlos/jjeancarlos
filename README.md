@@ -38,7 +38,7 @@
 </div>
 
 <br>
-
+<!--
 # Hello World! 👋
 
 You 👇
@@ -77,15 +77,15 @@ You 👇
 <img width="47%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jjeancarlos&layout=compact&theme=merko">
 
 <br clear="both">
-
+-->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jjeancarlos/jjeancarlos/main/output/github-snake-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jjeancarlos/jjeancarlos/main/output/github-snake.svg">
   <img alt="github snake animation" src="https://raw.githubusercontent.com/jjeancarlos/jjeancarlos/main/output/github-snake.svg" width="100%">
 </picture>
-
+<!--
 ![Alt text](https://spotify-recently-played-readme.vercel.app/api?user=7fnxubs91drhdpzj1dfnd5qik&width=1000)
-
+-->
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=00bfbf&height=120&section=footer"/>
 
 
