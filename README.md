@@ -35,6 +35,9 @@
   <a href="https://www.facebook.com/AVerdadePorMeioDeLinguagens/" target="_blank">
     <img src="https://img.shields.io/badge/Facebook_Page-1877F2?style=for-the-badge&logo=facebook&logoColor=white" target="_blank">
   </a>
+  <a href="https://jeanzin-homepage.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/portfólio-00bfbf?style=for-the-badge&logo=vercel&logoColor=black">
+  </a>
 </div>
 
 <br>
