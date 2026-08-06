@@ -1,37 +1,34 @@
-name: Debug Pacman
+name: Generate pacman animation
 
 on:
+  schedule:
+    # Executa a cada 12 horas
+    - cron: "0 */12 * * *"
+
   workflow_dispatch:
+
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
 
 jobs:
   generate:
-    permissions:
-      contents: write
-
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - name: Generate Pacman
+      - name: Generate pacman contribution graph
         uses: abozanona/pacman-contribution-graph@main
         with:
-          github_user_name: jjeancarlos
+          github_user_name: ${{ github.repository_owner }}
 
-      - name: Show current directory
-        run: |
-          echo "PWD:"
-          pwd
-
-      - name: List everything
-        run: |
-          ls -lah
-          echo "-------------"
-          find . -maxdepth 3
-
-      - name: Check dist
-        run: |
-          if [ -d dist ]; then
-            echo "dist exists"
-            ls -R dist
-          else
-            echo "dist DOES NOT exist"
-          fi
+      - name: Deploy to output branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: output
+          folder: dist
+          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}
