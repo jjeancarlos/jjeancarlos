@@ -2,11 +2,8 @@ name: Generate pacman animation
 
 on:
   schedule:
-    # Executa a cada 12 horas
     - cron: "0 */12 * * *"
-
   workflow_dispatch:
-
   push:
     branches:
       - main
@@ -17,9 +14,11 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Generate pacman contribution graph
         uses: abozanona/pacman-contribution-graph@main
         with:
@@ -31,4 +30,3 @@ jobs:
           branch: output
           folder: dist
           clean: true
-          token: ${{ secrets.GITHUB_TOKEN }}
