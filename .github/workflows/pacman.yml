@@ -1,12 +1,9 @@
-name: Generate pacman animation
+name: Generate Pacman Animation
 
 on:
   schedule:
     - cron: "0 */12 * * *"
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 permissions:
   contents: write
@@ -17,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Generate pacman contribution graph
         uses: abozanona/pacman-contribution-graph@main
@@ -25,7 +22,7 @@ jobs:
           github_user_name: ${{ github.repository_owner }}
 
       - name: Deploy to output branch
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4.7.3
         with:
           branch: output
           folder: dist
