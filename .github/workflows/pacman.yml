@@ -17,50 +17,10 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
-
-      - name: Debug before generation
-        run: |
-          echo "===== BEFORE ====="
-          pwd
-          ls -la
-          git status
-          git rev-parse --show-toplevel
-          echo "=================="
-
       - name: Generate pacman contribution graph
         uses: abozanona/pacman-contribution-graph@main
         with:
           github_user_name: ${{ github.repository_owner }}
-
-      - name: Debug after generation
-        run: |
-          echo "===== AFTER ====="
-          pwd
-          ls -la
-          git status || true
-          git rev-parse --show-toplevel || true
-          find . -maxdepth 2 -type f
-          echo "================="
-
-      - name: Checkout repository again
-        uses: actions/checkout@v5
-
-      - name: Debug after second checkout
-        run: |
-          echo "===== SECOND CHECKOUT ====="
-          pwd
-          ls -la
-          git status
-          git rev-parse --show-toplevel
-          echo "==========================="
-
-      - name: Verify dist folder
-        run: |
-          echo "===== DIST ====="
-          ls -R dist || true
-          echo "================"
 
       - name: Deploy to output branch
         uses: JamesIves/github-pages-deploy-action@v4.7.3
