@@ -82,9 +82,9 @@ You 👇
 <br clear="both">
 -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jjeancarlos/jjeancarlos/main/output/github-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jjeancarlos/jjeancarlos/main/output/github-snake.svg">
-  <img alt="github snake animation" src="https://raw.githubusercontent.com/jjeancarlos/jjeancarlos/main/output/github-snake.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jjeancarlos/jjeancarlos/output/github-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jjeancarlos/jjeancarlos/output/github-snake.svg">
+  <img alt="github snake animation" src="https://raw.githubusercontent.com/jjeancarlos/jjeancarlos/output/github-snake.svg" width="100%">
 </picture>
 <!--
 ![Alt text](https://spotify-recently-played-readme.vercel.app/api?user=7fnxubs91drhdpzj1dfnd5qik&width=1000)
